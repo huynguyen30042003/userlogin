@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Model;
 
 import java.io.BufferedReader;
@@ -45,17 +41,15 @@ public class UserModel {
         }
     }
 
-    // Add a new user to the list and save it to the file
     public boolean addUser(String username, String password) {
         if (!isUsernameExist(username)) {
             users.add(new User(username, password));
             saveUsers();
             return true;
         }
-        return false; // Username already exists
+        return false; 
     }
 
-    // Check if a username already exists
     public boolean isUsernameExist(String username) {
         for (User user : users) {
             if (user.getUsername().equalsIgnoreCase(username)) {
@@ -65,7 +59,6 @@ public class UserModel {
         return false;
     }
 
-    // Save the user data to a file
     private void saveUsers() {
         try (FileWriter fileWriter = new FileWriter(dataFilePath)) {
             for (User user : users) {
@@ -76,7 +69,6 @@ public class UserModel {
         }
     }
 
-    // Validate user credentials
     public boolean validateUser(String username, String password) {
         for (User user : users) {
             if (user.getUsername().equalsIgnoreCase(username) && user.getPassword().equals(password)) {
